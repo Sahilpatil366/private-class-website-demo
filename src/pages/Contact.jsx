@@ -1,5 +1,7 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const STORAGE_KEY = "yash-classes-consultations";
 const inquiryOptions = [
@@ -71,10 +73,7 @@ function Contact() {
   };
 
   const downloadExcel = () => {
-    if (!entries.length) {
-      return;
-    }
-
+    if (!entries.length) return;
     const worksheet = XLSX.utils.json_to_sheet(entries);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Consultations");
@@ -82,123 +81,262 @@ function Contact() {
   };
 
   return (
-    <div className="contact-page">
+    <div style={{ background: "var(--off-white)", minHeight: "100vh" }}>
+      <Navbar />
+
+      {/* ===== HERO ===== */}
       <section className="contact-hero">
         <div className="container">
-          <div>
-            <h1>Contact Us</h1>
-            <p>
-              We’re here to answer your questions and guide you through your learning journey.
-              Reach out anytime and our team will respond with the support you need.
-            </p>
+          <div className="section-badge" style={{ background: "rgba(255,255,255,0.18)", borderColor: "rgba(255,255,255,0.3)", color: "#fff" }}>
+            📬 Get in Touch
           </div>
+          <h1 style={{ marginTop: 10 }}>Get in Touch</h1>
+          <p>
+            We're here to answer your questions and guide you through your
+            learning journey. Reach out anytime — our team will respond promptly.
+          </p>
         </div>
       </section>
 
-      <section className="contact-card container">
-        <div className="contact-card-inner">
-          <div className="contact-heading">
-            <h1>Schedule a Consultation</h1>
-            <p>
-              Share your details and a brief description of your study requirements. Yash Classes will
-              review your inquiry and respond personally.
-            </p>
-          </div>
+      {/* ===== MAIN CONTENT ===== */}
+      <div className="container" style={{ paddingTop: 0, paddingBottom: 80 }}>
+        <div className="contact-card">
+          <div className="contact-card-inner" style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 52,
+            alignItems: "start",
+          }}>
+            {/* Left — Contact info */}
+            <div>
+              <div className="section-badge">📞 Contact Us</div>
+              <h2 style={{
+                fontSize: "1.6rem", fontWeight: 800,
+                color: "var(--text-dark)", marginBottom: 12, marginTop: 8,
+              }}>
+                Contact Us
+              </h2>
+              <p style={{ color: "var(--text-light)", lineHeight: 1.75, fontSize: "0.93rem", marginBottom: 28 }}>
+                Ground Floor, Shree Dattasai Tower,<br />
+                Near Wadala Post Office,<br />
+                Wadala West, Mumbai 400 033
+              </p>
 
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-row split">
-              <label>
-                <span>Full Name</span>
-                <input
-                  className="input-field"
-                  type="text"
-                  name="fullName"
-                  placeholder="Your full name"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-              <label>
-                <span>Mobile Number</span>
-                <input
-                  className="input-field"
-                  type="tel"
-                  name="mobile"
-                  placeholder="98XXX XXXXX"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-            </div>
+              {/* Info items */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 32 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{
+                    width: 40, height: 40, borderRadius: "50%",
+                    background: "var(--teal-pale)", display: "flex",
+                    alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0,
+                  }}>📍</div>
+                  <div>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-light)", marginBottom: 2 }}>Address</div>
+                    <div style={{ fontSize: "0.88rem", color: "var(--text-dark)", fontWeight: 500 }}>Wadala West, Mumbai 400 033</div>
+                  </div>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{
+                    width: 40, height: 40, borderRadius: "50%",
+                    background: "var(--teal-pale)", display: "flex",
+                    alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0,
+                  }}>✉️</div>
+                  <div>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-light)", marginBottom: 2 }}>Email</div>
+                    <a href="mailto:suyashclasseswadala@gmail.com" style={{ fontSize: "0.88rem", color: "var(--teal)", fontWeight: 500 }}>
+                      suyashclasseswadala@gmail.com
+                    </a>
+                  </div>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{
+                    width: 40, height: 40, borderRadius: "50%",
+                    background: "var(--teal-pale)", display: "flex",
+                    alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0,
+                  }}>📞</div>
+                  <div>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-light)", marginBottom: 2 }}>Phone</div>
+                    <div style={{ fontSize: "0.88rem", color: "var(--text-dark)", fontWeight: 500 }}>
+                      <a href="tel:9987714003" style={{ color: "var(--text-dark)" }}>9987714003</a> ·{" "}
+                      <a href="tel:8451011123" style={{ color: "var(--text-dark)" }}>8451011123</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <div className="form-row split">
-              <label>
-                <span>
-                  Email Address <small>(optional)</small>
-                </span>
-                <input
-                  className="input-field"
-                  type="email"
-                  name="email"
-                  placeholder="your@email.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <span>Inquiry Type</span>
-                <select
-                  className="input-field"
-                  name="inquiryType"
-                  value={formData.inquiryType}
-                  onChange={handleChange}
-                  required
-                >
-                  {inquiryOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
+              {/* Keep in touch social row */}
+              <div style={{ marginBottom: 28 }}>
+                <div style={{ fontSize: "0.78rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-light)", marginBottom: 12 }}>Keep in Touch</div>
+                <div style={{ display: "flex", gap: 10 }}>
+                  {["📘", "🐦", "💼", "📸", "▶️"].map((icon, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        width: 36, height: 36, borderRadius: "50%",
+                        background: "var(--off-white)", border: "1px solid var(--border)",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontSize: "0.9rem", cursor: "pointer", transition: "all 0.2s",
+                      }}
+                    >{icon}</div>
                   ))}
-                </select>
-              </label>
+                </div>
+              </div>
+
+              {/* Map placeholder */}
+              <div style={{
+                width: "100%", height: 180,
+                borderRadius: "var(--radius-md)",
+                background: "linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                border: "1px solid var(--border)",
+                flexDirection: "column", gap: 8,
+                color: "var(--teal-dark)", fontSize: "0.88rem", fontWeight: 600,
+              }}>
+                <span style={{ fontSize: "2rem" }}>🗺️</span>
+                <span>Wadala, Mumbai</span>
+                <a
+                  href="https://maps.google.com/?q=Wadala+West+Mumbai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: "0.78rem", color: "var(--teal)", textDecoration: "underline" }}
+                >
+                  View on Google Maps
+                </a>
+              </div>
             </div>
 
-            <label className="form-row full">
-              <span>Message</span>
-              <textarea
-                className="input-field textarea"
-                name="message"
-                rows="5"
-                placeholder="Briefly describe your requirements..."
-                value={formData.message}
-                onChange={handleChange}
-              />
-            </label>
+            {/* Right — Form */}
+            <div>
+              <div className="section-badge">❓ Have Questions?</div>
+              <h2 style={{
+                fontSize: "1.6rem", fontWeight: 800,
+                color: "var(--text-dark)", marginBottom: 8, marginTop: 8,
+              }}>
+                Schedule a Consultation
+              </h2>
+              <p style={{ color: "var(--text-light)", lineHeight: 1.75, fontSize: "0.92rem", marginBottom: 24 }}>
+                Share your details and a brief description of your study requirements.
+                We'll respond personally and guide you through enrollment.
+              </p>
 
-            <div className="form-actions">
-              <button type="submit" className="btn btn-primary btn-large">
-                Request Consultation
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={downloadExcel}
-                disabled={!entries.length}
-              >
-                Download Excel
-              </button>
+              <form className="contact-form" onSubmit={handleSubmit}>
+                <div className="form-row split">
+                  <label>
+                    <span>Name</span>
+                    <input
+                      className="input-field"
+                      type="text"
+                      name="fullName"
+                      placeholder="Your full name"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Email</span>
+                    <input
+                      className="input-field"
+                      type="email"
+                      name="email"
+                      placeholder="your@email.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </label>
+                </div>
+
+                <div className="form-row split">
+                  <label>
+                    <span>Mobile Number</span>
+                    <input
+                      className="input-field"
+                      type="tel"
+                      name="mobile"
+                      placeholder="98XXX XXXXX"
+                      value={formData.mobile}
+                      onChange={handleChange}
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Inquiry Type</span>
+                    <select
+                      className="input-field"
+                      name="inquiryType"
+                      value={formData.inquiryType}
+                      onChange={handleChange}
+                      required
+                    >
+                      {inquiryOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+
+                <label className="form-row full">
+                  <span>Your Message</span>
+                  <textarea
+                    className="input-field textarea"
+                    name="message"
+                    rows="4"
+                    placeholder="Briefly describe your requirements..."
+                    value={formData.message}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <div className="form-actions">
+                  <button type="submit" className="btn btn-primary">
+                    Send Message
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-outline-teal"
+                    onClick={downloadExcel}
+                    disabled={!entries.length}
+                    style={{ opacity: entries.length ? 1 : 0.5 }}
+                  >
+                    Download Excel
+                  </button>
+                </div>
+
+                {success && (
+                  <div className="success-message">
+                    ✅ Consultation request saved! We'll be in touch soon.
+                  </div>
+                )}
+              </form>
+
+              <div className="contact-summary">
+                <p>{entries.length} consultation request(s) available for download.</p>
+              </div>
             </div>
-
-            {success && <div className="success-message">Consultation request saved successfully.</div>}
-          </form>
-
-          <div className="contact-summary">
-            <p>{entries.length} consultation request(s) available for download.</p>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* ===== JOIN COMMUNITY STRIP ===== */}
+      <div className="community-strip">
+        <div className="container">
+          <h3>Join Our Community</h3>
+          <p>Enter your email address to get notified about new batches and updates.</p>
+          <div className="community-form">
+            <input
+              className="community-input"
+              type="email"
+              placeholder="Enter your email"
+              aria-label="Email address"
+            />
+            <button className="community-btn">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-﻿import "./App.css";
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -6,6 +6,7 @@ import Events from "./pages/Events";
 import Syllabus from "./pages/Syllabus";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
+
 
 function App() {
   return (

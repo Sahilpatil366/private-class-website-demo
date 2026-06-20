@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import logoImg from "../assets/logo.png";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -7,15 +8,22 @@ function Navbar() {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <div className="brand">Yash Classes</div>
+        {/* Brand */}
+        <Link className="brand" to="/" onClick={() => setOpen(false)}>
+          <img src={logoImg} alt="Suyash Classes Logo" className="brand-logo" />
+          <div className="brand-text">
+            <span className="brand-name">Suyash Classes</span>
+            <span className="brand-tagline">Since 1990 · Wadala</span>
+          </div>
+        </Link>
 
+        {/* Mobile toggle */}
         <button
           className="mobile-toggle"
           aria-label="Toggle navigation"
-          aria-expanded={open}
           onClick={() => setOpen((s) => !s)}
         >
-          <span className="sr-only">Toggle menu</span>
+          <span className="sr-only">Menu</span>
           <div className={`hamburger ${open ? "open" : ""}`}>
             <span></span>
             <span></span>
@@ -23,29 +31,18 @@ function Navbar() {
           </div>
         </button>
 
-        <nav className={`nav-links ${open ? "open" : ""}`} aria-label="Primary">
-          <Link className="nav-link" to="/" onClick={() => setOpen(false)}>
-            Home
-          </Link>
-          <Link className="nav-link" to="/syllabus" onClick={() => setOpen(false)}>
-            All Courses
-          </Link>
-          <a className="nav-link" href="#about" onClick={() => setOpen(false)}>
-            About Us
-          </a>
-          <a className="nav-link" href="#instructors" onClick={() => setOpen(false)}>
-            Instructors
-          </a>
-          <a className="nav-link" href="#pricing" onClick={() => setOpen(false)}>
-            Pricing & FAQ
-          </a>
-          <Link className="nav-link" to="/contact" onClick={() => setOpen(false)}>
-            Contact
-          </Link>
+        {/* Nav links */}
+        <nav className={`nav-links ${open ? "open" : ""}`} aria-label="Main navigation">
+          <Link className="nav-link" to="/" onClick={() => setOpen(false)}>Home</Link>
+          <Link className="nav-link" to="/syllabus" onClick={() => setOpen(false)}>All Courses</Link>
+          <a className="nav-link" href="/#about" onClick={() => setOpen(false)}>About Us</a>
+          <Link className="nav-link" to="/events" onClick={() => setOpen(false)}>Instructors</Link>
+          <Link className="nav-link" to="/resources" onClick={() => setOpen(false)}>Resources</Link>
+          <Link className="nav-link" to="/contact" onClick={() => setOpen(false)}>Contact</Link>
         </nav>
 
-        <Link className="nav-cta" to="/contact">
-          Start Learning
+        <Link className="nav-cta" to="/contact" onClick={() => setOpen(false)}>
+          Enroll Now
         </Link>
       </div>
     </header>
