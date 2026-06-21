@@ -10,7 +10,7 @@ function Home() {
       <Navbar />
 
       {/* ─────────────────────────────────────────
-          HERO  — Logo + Name + Story + CTA
+          HERO — Logo + Name + Story + CTA
       ───────────────────────────────────────── */}
       <section style={{
         background: `linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 245, 235, 0.65) 100%), url(${heroBg}) center/cover no-repeat`,
@@ -63,11 +63,42 @@ function Home() {
         </div>
       </section>
 
+      {/* ─────────────────────────────────────────
+          STATS SECTION
+      ───────────────────────────────────────── */}
+      <section className="stats-section" style={{ padding: "60px 0", background: "#ffffff" }}>
+        <div className="container">
+          <div className="stats-grid" style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "20px",
+          }}>
+            <div className="stat-card" style={{ textAlign: "center", padding: "20px", background: "#fdf8f4", borderRadius: "12px", border: "1px solid #ffebe0" }}>
+              <h2 style={{ fontSize: "2rem", fontWeight: 800, color: "#f26522", margin: 0 }}>5000+</h2>
+              <p style={{ margin: "8px 0 0", fontWeight: 600, color: "#1a1a2e" }}>Students Trained</p>
+            </div>
+
+            <div className="stat-card" style={{ textAlign: "center", padding: "20px", background: "#fdf8f4", borderRadius: "12px", border: "1px solid #ffebe0" }}>
+              <h2 style={{ fontSize: "2rem", fontWeight: 800, color: "#f26522", margin: 0 }}>30+</h2>
+              <p style={{ margin: "8px 0 0", fontWeight: 600, color: "#1a1a2e" }}>Years Experience</p>
+            </div>
+
+            <div className="stat-card" style={{ textAlign: "center", padding: "20px", background: "#fdf8f4", borderRadius: "12px", border: "1px solid #ffebe0" }}>
+              <h2 style={{ fontSize: "2rem", fontWeight: 800, color: "#f26522", margin: 0 }}>100%</h2>
+              <p style={{ margin: "8px 0 0", fontWeight: 600, color: "#1a1a2e" }}>Pass Rate</p>
+            </div>
+
+            <div className="stat-card" style={{ textAlign: "center", padding: "20px", background: "#fdf8f4", borderRadius: "12px", border: "1px solid #ffebe0" }}>
+              <h2 style={{ fontSize: "2rem", fontWeight: 800, color: "#f26522", margin: 0 }}>50+</h2>
+              <p style={{ margin: "8px 0 0", fontWeight: 600, color: "#1a1a2e" }}>State Toppers</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ─────────────────────────────────────────
           OUR RESULTS — Light Theme
       ───────────────────────────────────────── */}
-
       <section style={{
         background: "#fff9f5",
         padding: "80px 0",
@@ -109,12 +140,12 @@ function Home() {
 
             <div style={{ display: "flex", gap: 20, flexWrap: "wrap", justifyContent: "center" }}>
               {[
-                { rank: "1st", name: "Pari Gade",        pct: "92.20%", school: "Auxilium School",     big: true  },
-                { rank: "2nd", name: "Om Panchal",       pct: "90.40%", school: "Auxilium School",     big: false },
-                { rank: "3rd", name: "Siddhi Sawant",    pct: "87%",    school: "Auxilium School",     big: false },
-                { rank: "4th", name: "Arya Bhalekar",    pct: "86%",    school: "Auxilium School",     big: false },
-                { rank: "5th", name: "Maithili Kamble",  pct: "85%",    school: "Auxilium School",     big: false },
-                { rank: "6th", name: "Aleena Shaikh",    pct: "80%",    school: "Auxilium School",     big: false },
+                { rank: "1st", name: "Pari Gade",    pct: "92.20%", school: "Auxilium School",    big: true  },
+                { rank: "2nd", name: "Om Panchal",    pct: "90.40%", school: "Auxilium School",    big: false },
+                { rank: "3rd", name: "Siddhi Sawant", pct: "87%",    school: "Auxilium School",    big: false },
+                { rank: "4th", name: "Arya Bhalekar", pct: "86%",    school: "Auxilium School",    big: false },
+                { rank: "5th", name: "Maithili Kamble", pct: "85%",    school: "Auxilium School",    big: false },
+                { rank: "6th", name: "Aleena Shaikh", pct: "80%",    school: "Auxilium School",    big: false },
               ].map(({ rank, name, pct, school, big }) => (
                 <div key={name} style={{
                   background: "#fff",
@@ -127,7 +158,6 @@ function Home() {
                   boxShadow: big ? "0 8px 24px rgba(242,101,34,0.12)" : "0 4px 16px rgba(0,0,0,0.03)",
                   transition: "transform 0.2s",
                 }}>
-                  {/* Rank badge */}
                   <div style={{
                     position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)",
                     background: big ? "#f26522" : "#fff",
@@ -138,7 +168,6 @@ function Home() {
                     border: big ? "2px solid #fff" : "1px solid #ffebe0",
                   }}>{rank} Rank</div>
 
-                  {/* Photo placeholder */}
                   <div style={{
                     width: big ? 80 : 68,
                     height: big ? 80 : 68,
@@ -150,14 +179,12 @@ function Home() {
                     fontSize: "1.6rem",
                   }}>👤</div>
 
-                  {/* Percentage */}
                   <div style={{
                     fontSize: big ? "1.5rem" : "1.3rem",
                     fontWeight: 900, color: big ? "#1a1a2e" : "#333",
                     marginBottom: 6, lineHeight: 1,
                   }}>{pct}</div>
 
-                  {/* Name */}
                   <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "#444", marginBottom: 4 }}>{name}</div>
                   <div style={{ fontSize: "0.7rem", color: "#888" }}>{school}</div>
                 </div>
@@ -179,7 +206,7 @@ function Home() {
 
             <div style={{ display: "flex", gap: 20, flexWrap: "wrap", justifyContent: "center" }}>
               {[
-                { rank: "Topper",  name: "Vibhuti Patil",       pct: "96.20%", stream: "SSC · Auxilium School",  big: true  },
+                { rank: "Topper",  name: "Vibhuti Patil",     pct: "96.20%", stream: "SSC · Auxilium School",  big: true  },
                 { rank: "Commerce",name: "Apurva Rajadhyaksha", pct: "80%",    stream: "XII Commerce · Eco 90/100",big: false },
               ].map(({ rank, name, pct, stream, big }) => (
                 <div key={name} style={{
@@ -394,3 +421,4 @@ function Home() {
 }
 
 export default Home;
+

@@ -182,26 +182,25 @@ function Contact() {
                 </div>
               </div>
 
-              {/* Map placeholder */}
-              <div style={{
-                width: "100%", height: 180,
-                borderRadius: "var(--radius-md)",
-                background: "linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                border: "1px solid var(--border)",
-                flexDirection: "column", gap: 8,
-                color: "var(--teal-dark)", fontSize: "0.88rem", fontWeight: 600,
-              }}>
-                <span style={{ fontSize: "2rem" }}>🗺️</span>
-                <span>Wadala, Mumbai</span>
-                <a
-                  href="https://maps.google.com/?q=Wadala+West+Mumbai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontSize: "0.78rem", color: "var(--teal)", textDecoration: "underline" }}
-                >
-                  View on Google Maps
-                </a>
+              {/* Google Map */}
+              <div
+                style={{
+                  width: "100%",
+                  height: "250px",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  border: "1px solid var(--border)",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+                }}
+              >
+                <iframe
+                  title="Suyash Classes Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.0750331672375!2d72.85268607394946!3d19.016415053842895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cfaee4b69573%3A0x6726420f45d9c702!2sSUYASH%20CLASSES%20WADALA!5e0!3m2!1sen!2sin!4v1781991429669!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                ></iframe>
               </div>
             </div>
 

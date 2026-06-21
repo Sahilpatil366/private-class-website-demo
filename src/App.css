@@ -1078,3 +1078,148 @@ img { max-width: 100%; display: block; }
   .hero-inner { gap: 32px; }
   .enroll-card { padding: 20px; }
 }
+ 
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: #f26522;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 34px;
+  z-index: 99999;
+  border: 3px solid white;
+  box-shadow: 0 6px 20px rgba(242, 101, 34, 0.4);
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+.stats-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid #eee;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+}
+
+.stat-card h2 {
+  color: #f26522;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  color: #555;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 86px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+.brand-tagline {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #f26522;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #1a1a2e;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  color: #f26522;
+}
+
+.nav-cta {
+  background: #f26522;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(242, 101, 34, 0.25);
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+}
