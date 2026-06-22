@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion"; // <-- NEW import
 import * as XLSX from "xlsx";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -14,6 +15,12 @@ const inquiryOptions = [
   "CET Preparation",
   "Other",
 ];
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -110,7 +117,12 @@ function Contact() {
       <Navbar />
 
       {/* ===== HERO ===== */}
-      <section className="contact-hero">
+      <motion.section
+        className="contact-hero"
+        initial="hidden"
+        animate="visible"
+        variants={fadeInUp}
+      >
         <div className="container">
           <div className="section-badge" style={{ background: "rgba(255,255,255,0.18)", borderColor: "rgba(255,255,255,0.3)", color: "#fff" }}>
             📬 Get in Touch
@@ -121,11 +133,17 @@ function Contact() {
             learning journey. Reach out anytime — our team will respond promptly.
           </p>
         </div>
-      </section>
+      </motion.section>
 
       {/* ===== MAIN CONTENT ===== */}
       <div className="container" style={{ paddingTop: 0, paddingBottom: 80 }}>
-        <div className="contact-card">
+        <motion.div
+          className="contact-card"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
           <div className="contact-card-inner" style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
@@ -340,11 +358,17 @@ function Contact() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* ===== JOIN COMMUNITY STRIP ===== */}
-      <div className="community-strip">
+      <motion.div
+        className="community-strip"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
         <div className="container">
           <h3>Join Our Community</h3>
           <p>Enter your email address to get notified about new batches and updates.</p>
@@ -358,7 +382,7 @@ function Contact() {
             <button className="community-btn">Subscribe</button>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <Footer />
     </div>

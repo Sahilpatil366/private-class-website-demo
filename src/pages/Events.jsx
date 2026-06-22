@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"; // NEW import
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
@@ -59,6 +60,17 @@ const timelineEvents = [
   },
 ];
 
+/* ── Animation variants (no CSS changes) ── */
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2 } },
+};
+
 function Events() {
   return (
     <PageTransition>
@@ -66,7 +78,12 @@ function Events() {
         <Navbar />
 
         {/* ── 1. Hero Section ── */}
-        <section className="events-hero">
+        <motion.section
+          className="events-hero"
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+        >
           <div className="container events-hero-inner">
             <div className="section-badge" style={{ display: "none", background: "rgba(255,255,255,0.2)", color: "#fff", borderColor: "rgba(255,255,255,0.4)" }}>
               🎉 Beyond the Classroom
@@ -91,10 +108,17 @@ function Events() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ── 2. Featured Events ── */}
-        <section className="section" style={{ background: "#fff" }}>
+        <motion.section
+          className="section"
+          style={{ background: "#fff" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
           <div className="container">
             <div className="section-header" style={{ textAlign: "center" }}>
               <div className="section-badge">🌟 Highlights</div>
@@ -106,7 +130,7 @@ function Events() {
 
             <div className="featured-events-grid">
               {featuredEvents.map((evt) => (
-                <div key={evt.id} className="featured-card">
+                <motion.div key={evt.id} className="featured-card" variants={fadeInUp}>
                   <div className="featured-card__img-wrap" style={{ background: evt.color }}>
                     <img
                       src={evt.img}
@@ -128,14 +152,20 @@ function Events() {
                     <p className="featured-card__desc">{evt.desc}</p>
                     <button className="featured-card__btn">View Gallery →</button>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ── 3. Educational Trips ── */}
-        <section className="section trips-section">
+        <motion.section
+          className="section trips-section"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
           <div className="container">
             <div className="trips-grid">
               <div className="trips-content">
@@ -169,10 +199,17 @@ function Events() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ── 4. Events Timeline ── */}
-        <section className="section" style={{ background: "#fff" }}>
+        <motion.section
+          className="section"
+          style={{ background: "#fff" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
           <div className="container">
             <div className="section-header" style={{ textAlign: "center" }}>
               <div className="section-badge">📅 Yearly Calendar</div>
@@ -184,21 +221,28 @@ function Events() {
 
             <div className="timeline">
               {timelineEvents.map((item, i) => (
-                <div key={i} className="timeline-item">
+                <motion.div key={i} className="timeline-item" variants={fadeInUp}>
                   <div className="timeline-dot"></div>
                   <div className="timeline-content">
                     <div className="timeline-year">{item.year}</div>
                     <h3 className="timeline-title">{item.title}</h3>
                     <p className="timeline-desc">{item.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ── 5. Video Highlights ── */}
-        <section className="section" style={{ background: "#f8f9fa" }}>
+        <motion.section
+          className="section"
+          style={{ background: "#f8f9fa" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
           <div className="container">
             <div className="section-header" style={{ textAlign: "center" }}>
               <div className="section-badge">🎥 Watch Us</div>
@@ -207,20 +251,27 @@ function Events() {
 
             <div className="video-grid">
               {[1, 2, 3].map((num) => (
-                <div key={num} className="video-card">
+                <motion.div key={num} className="video-card" variants={fadeInUp}>
                   <div className="video-placeholder" style={{ background: "#1a1a2e" }}>
                     <div className="play-button">▶</div>
                     <span>Add Video {num}</span>
                   </div>
                   <div className="video-title">Event Highlight {num}</div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ── 6. Photo Gallery (Masonry style) ── */}
-        <section className="section" style={{ background: "#fff", paddingBottom: 80 }}>
+        <motion.section
+          className="section"
+          style={{ background: "#fff", paddingBottom: 80 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={staggerContainer}
+        >
           <div className="container">
             <div className="section-header" style={{ textAlign: "center" }}>
               <div className="section-badge">📷 Memories</div>
@@ -232,7 +283,7 @@ function Events() {
 
             <div className="gallery-grid">
               {galleryImages.map((img) => (
-                <div key={img.id} className={`gallery-item ${img.span}`}>
+                <motion.div key={img.id} className={`gallery-item ${img.span}`} variants={fadeInUp}>
                   <img
                     src={img.img}
                     alt={`Gallery ${img.id}`}
@@ -248,14 +299,21 @@ function Events() {
                   <div className="gallery-hover">
                     <span>View Image</span>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ── 7. CTA Section ── */}
-        <section className="cta-section" style={{ background: "linear-gradient(135deg, #f26522, #ff8c42)" }}>
+        <motion.section
+          className="cta-section"
+          style={{ background: "linear-gradient(135deg, #f26522, #ff8c42)" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
           <h2>Experience Learning with Us</h2>
           <p>
             Be a part of an environment that combines academic excellence with memorable life experiences.
@@ -268,7 +326,7 @@ function Events() {
               Explore Courses
             </Link>
           </div>
-        </section>
+        </motion.section>
 
         <Footer />
       </div>

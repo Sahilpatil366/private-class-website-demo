@@ -1,6 +1,18 @@
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
 
 function About() {
   return (
@@ -9,7 +21,10 @@ function About() {
         <Navbar />
 
         {/* Hero Section */}
-        <section
+        <motion.section
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
           style={{
             background: "linear-gradient(135deg, #1a1a2e, #0f0f1c)",
             color: "#fff",
@@ -41,13 +56,18 @@ function About() {
               and academic excellence since 1990.
             </p>
           </div>
-        </section>
+        </motion.section>
 
         {/* Our Story */}
-        <section style={{ padding: "72px 0" }}>
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+          style={{ padding: "72px 0" }}
+        >
           <div className="container">
             <div className="about-story-grid">
-
               {/* Left — text */}
               <div>
                 <h2
@@ -112,10 +132,16 @@ function About() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Statistics */}
-        <section style={{ background: "#fff", padding: "64px 0" }}>
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+          style={{ background: "#fff", padding: "64px 0" }}
+        >
           <div className="container">
             <div style={{ textAlign: "center", marginBottom: 40 }}>
               <p
@@ -149,9 +175,10 @@ function About() {
                 { val: "100%",  label: "Commitment to Success" },
                 { val: "Expert", label: "Faculty Team" },
               ].map(({ val, label }) => (
-                <div
+                <motion.div
                   key={val}
                   className="about-stat-item"
+                  variants={fadeInUp}
                   style={{
                     padding: "28px 16px",
                     borderRadius: 12,
@@ -161,11 +188,11 @@ function About() {
                 >
                   <h2>{val}</h2>
                   <p>{label}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         <Footer />
       </div>

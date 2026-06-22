@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
@@ -135,6 +136,17 @@ const plans = [
   },
 ];
 
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
 function Syllabus() {
   const [openFaq, setOpenFaq] = useState(null);
 
@@ -144,7 +156,12 @@ function Syllabus() {
         <Navbar />
 
         {/* ── Hero ── */}
-        <section className="contact-hero">
+        <motion.section
+          className="contact-hero"
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+        >
           <div className="container">
             <div
               className="section-badge"
@@ -163,10 +180,17 @@ function Syllabus() {
               excel in board exams and competitive entrance tests.
             </p>
           </div>
-        </section>
+        </motion.section>
 
         {/* ── Courses Grid ── */}
-        <section className="section" style={{ background: "#f8f9fa" }}>
+        <motion.section
+          className="section"
+          style={{ background: "#f8f9fa" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={staggerContainer}
+        >
           <div className="container">
             <div className="section-header" style={{ textAlign: "center", display: "none" }}>
               <div className="section-badge">🎓 What We Teach</div>
@@ -179,7 +203,7 @@ function Syllabus() {
 
             <div className="courses-grid">
               {courses.map((c) => (
-                <article key={c.id} className="course-card">
+                <motion.article key={c.id} className="course-card" variants={fadeInUp}>
                   {/* Image area */}
                   <div className="course-card__img-wrap">
                     <img
@@ -236,14 +260,20 @@ function Syllabus() {
                       Learn More →
                     </Link>
                   </div>
-                </article>
+                </motion.article>
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ── Community Strip ── */}
-        <div className="community-strip">
+        <motion.div
+          className="community-strip"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
           <div className="container">
             <h3>Join Our Community</h3>
             <p>
@@ -260,10 +290,17 @@ function Syllabus() {
               <button className="community-btn">Subscribe</button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ── Pricing & FAQ ── */}
-        <section className="section" style={{ background: "#fff" }}>
+        <motion.section
+          className="section"
+          style={{ background: "#fff" }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInUp}
+        >
           <div className="container">
             <div className="syllabus-pricing-faq-grid">
 
@@ -293,10 +330,22 @@ function Syllabus() {
                   to notes, tests, and personal mentoring.
                 </p>
 
-                <div className="syllabus-plans-grid">
+                <motion.div
+                  className="syllabus-plans-grid"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={staggerContainer}
+                >
                   {plans.map((plan, i) => (
-                    <div
+                    <motion.div
                       key={i}
+                      variants={fadeInUp}
+                      whileHover={{
+                        scale: 1.03,
+                        backgroundColor: plan.featured ? "#00796b" : "#fef3e8",
+                        transition: { duration: 0.3 },
+                      }}
                       style={{
                         background: plan.featured
                           ? "linear-gradient(135deg, #00695c, #009688)"
@@ -420,9 +469,9 @@ function Syllabus() {
                       >
                         Enroll Now
                       </Link>
-                    </div>
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </div>
 
               {/* FAQ */}
@@ -506,7 +555,7 @@ function Syllabus() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         <Footer />
       </div>

@@ -1198,8 +1198,8 @@ img { max-width: 100%; display: block; }
   transition: transform 0.3s;
 }
 .featured-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
 }
 .featured-card__img-wrap {
   position: relative;
@@ -2055,4 +2055,26 @@ img { max-width: 100%; display: block; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
 
   .btn-large { padding: 12px 24px; font-size: 0.88rem; }
+}
+
+/* Plan cards hover effect */
+.plan-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Default (Monthly / Extended) */
+.plan-card-default {
+  background: #fff;
+}
+.plan-card-default:hover {
+  background: #fef3e8;      /* warm cream on hover */
+}
+
+/* Featured (Annual) */
+.plan-card-annual {
+  background: linear-gradient(135deg, #00695c, #009688);
+}
+.plan-card-annual:hover {
+  background: #00796b;       /* solid darker teal on hover */
 }
