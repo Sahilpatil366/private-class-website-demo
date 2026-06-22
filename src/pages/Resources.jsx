@@ -21,7 +21,7 @@ function Resources() {
       {/* Hero */}
       <section className="contact-hero">
         <div className="container">
-          <div className="section-badge" style={{ background: "rgba(255,255,255,0.18)", borderColor: "rgba(255,255,255,0.3)", color: "#fff" }}>
+          <div className="section-badge" style={{ display: "none", background: "rgba(255,255,255,0.18)", borderColor: "rgba(255,255,255,0.3)", color: "#fff" }}>
             📁 Study Resources
           </div>
           <h1 style={{ marginTop: 10 }}>Resources</h1>

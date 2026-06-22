@@ -139,7 +139,7 @@ function Home() {
               SSC Board (10th Std) — 2024
             </div>
 
-            <div style={{ display: "flex", gap: 20, flexWrap: "wrap", justifyContent: "center" }}>
+            <div className="home-results-grid">
               {[
                 { rank: "1st", name: "Pari Gade",    pct: "92.20%", school: "Auxilium School",    big: true  },
                 { rank: "2nd", name: "Om Panchal",    pct: "90.40%", school: "Auxilium School",    big: false },
@@ -148,16 +148,11 @@ function Home() {
                 { rank: "5th", name: "Maithili Kamble", pct: "85%",    school: "Auxilium School",    big: false },
                 { rank: "6th", name: "Aleena Shaikh", pct: "80%",    school: "Auxilium School",    big: false },
               ].map(({ rank, name, pct, school, big }) => (
-                <div key={name} style={{
+                <div key={name} className={`home-result-card${big ? " home-result-card-big" : ""}`} style={{
                   background: "#fff",
                   border: big ? "2px solid #f26522" : "1px solid #ffebe0",
-                  borderRadius: 12,
-                  padding: big ? "28px 24px" : "24px 20px",
-                  textAlign: "center",
-                  width: big ? 160 : 140,
-                  position: "relative",
+                  padding: big ? "28px 18px" : "22px 16px",
                   boxShadow: big ? "0 8px 24px rgba(242,101,34,0.12)" : "0 4px 16px rgba(0,0,0,0.03)",
-                  transition: "transform 0.2s",
                 }}>
                   <div style={{
                     position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)",
@@ -205,19 +200,15 @@ function Home() {
               HSC Board (12th Std) — 2024
             </div>
 
-            <div style={{ display: "flex", gap: 20, flexWrap: "wrap", justifyContent: "center" }}>
+            <div className="home-results-grid">
               {[
                 { rank: "Topper",  name: "Vibhuti Patil",     pct: "96.20%", stream: "SSC · Auxilium School",  big: true  },
                 { rank: "Commerce",name: "Apurva Rajadhyaksha", pct: "80%",    stream: "XII Commerce · Eco 90/100",big: false },
               ].map(({ rank, name, pct, stream, big }) => (
-                <div key={name} style={{
+                <div key={name} className={`home-result-card${big ? " home-result-card-big" : ""}`} style={{
                   background: "#fff",
                   border: big ? "2px solid #f26522" : "1px solid #ffebe0",
-                  borderRadius: 12,
-                  padding: "28px 24px",
-                  textAlign: "center",
-                  width: big ? 170 : 160,
-                  position: "relative",
+                  padding: "24px 16px",
                   boxShadow: big ? "0 8px 24px rgba(242,101,34,0.12)" : "0 4px 16px rgba(0,0,0,0.03)",
                 }}>
                   <div style={{
@@ -347,7 +338,7 @@ function Home() {
             Don't just take our word for it
           </h2>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
+          <div className="home-testimonials-grid">
             {[
               { text: "The teachers here actually care. When I was struggling with math, my teacher sat with me after class until I completely understood it. It didn't feel like a normal coaching class.", name: "Aditya Sharma", detail: "CET Qualifier, 12th Std" },
               { text: "The printed notes saved my life before the exams. And because we had so many weekly tests, by the time the boards came around, I wasn't even nervous. I ended up topping my school!", name: "Priya Patil", detail: "SSC Topper, 10th Std" },
@@ -372,7 +363,8 @@ function Home() {
           CONTACT + LOCATION — simple block
       ───────────────────────────────────────── */}
       <section style={{ background: "#1a1a2e", padding: "52px 0" }}>
-        <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
+        <div className="container">
+          <div className="home-contact-grid">
           <div>
             <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#f26522", marginBottom: 10 }}>Find Us</p>
             <h2 style={{ fontSize: "clamp(1.3rem,2.2vw,1.7rem)", fontWeight: 800, color: "#fff", marginBottom: 16, lineHeight: 1.3 }}>
@@ -396,22 +388,23 @@ function Home() {
             </div>
           </div>
 
-          <div style={{ textAlign: "center" }}>
-            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.93rem", lineHeight: 1.85, marginBottom: 24 }}>
-              New academic year enrollments are open. Seats fill up fast — don't wait.
-            </p>
-            <Link to="/contact" style={{
-              display: "inline-block",
-              background: "#f26522", color: "#fff",
-              padding: "14px 36px", borderRadius: 6,
-              fontWeight: 700, fontSize: "1rem",
-              textDecoration: "none",
-            }}>
-              Book a Free Consultation
-            </Link>
-            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.78rem", marginTop: 12 }}>
-              Or call us directly — we'll guide you through enrollment.
-            </p>
+            <div style={{ textAlign: "center" }}>
+              <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.93rem", lineHeight: 1.85, marginBottom: 24 }}>
+                New academic year enrollments are open. Seats fill up fast — don't wait.
+              </p>
+              <Link to="/contact" style={{
+                display: "inline-block",
+                background: "#f26522", color: "#fff",
+                padding: "14px 36px", borderRadius: 6,
+                fontWeight: 700, fontSize: "1rem",
+                textDecoration: "none",
+              }}>
+                Book a Free Consultation
+              </Link>
+              <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.78rem", marginTop: 12 }}>
+                Or call us directly — we'll guide you through enrollment.
+              </p>
+            </div>
           </div>
         </div>
       </section>
