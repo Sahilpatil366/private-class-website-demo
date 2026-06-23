@@ -4,6 +4,7 @@ import * as XLSX from "xlsx";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
+import "./Contact.css";
 
 const STORAGE_KEY = "yash-classes-consultations";
 const inquiryOptions = [
@@ -37,6 +38,7 @@ function Contact() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setEntries(JSON.parse(saved));
       } catch (error) {
         console.error("Invalid consultation data", error);

@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PageTransition from "../components/PageTransition";
+import "./Syllabus.css";
 
 /* ─────────────────────────────────────────────────────────────
    COURSE DATA
@@ -341,29 +342,9 @@ function Syllabus() {
                     <motion.div
                       key={i}
                       variants={fadeInUp}
-                      whileHover={{
-                        scale: 1.03,
-                        backgroundColor: plan.featured ? "#00796b" : "#fef3e8",
-                        transition: { duration: 0.3 },
-                      }}
-                      style={{
-                        background: plan.featured
-                          ? "linear-gradient(135deg, #00695c, #009688)"
-                          : "#fff",
-                        border: `1px solid ${
-                          plan.featured ? "transparent" : "var(--border)"
-                        }`,
-                        borderRadius: 12,
-                        padding: "24px 16px",
-                        boxShadow: plan.featured
-                          ? "0 8px 28px rgba(0,150,136,0.25)"
-                          : "0 2px 8px rgba(0,0,0,0.05)",
-                        color: plan.featured ? "white" : "var(--text-dark)",
-                        textAlign: "center",
-                        position: "relative",
-                        outline: plan.featured ? "2px solid #009688" : "none",
-                        outlineOffset: plan.featured ? "2px" : "0",
-                      }}
+                      className={`pricing-card ${
+                        plan.featured ? "pricing-card--annual" : "pricing-card--standard"
+                      }`}
                     >
                       {plan.featured && (
                         <div
@@ -379,96 +360,73 @@ function Syllabus() {
                             fontSize: "0.65rem",
                             fontWeight: 700,
                             whiteSpace: "nowrap",
+                            zIndex: 2,
                           }}
                         >
                           POPULAR
                         </div>
                       )}
-                      <div
-                        style={{
-                          fontSize: "0.72rem",
-                          fontWeight: 700,
-                          textTransform: "uppercase",
-                          letterSpacing: "0.08em",
-                          opacity: 0.7,
-                          marginBottom: 8,
-                          marginTop: plan.featured ? 8 : 0,
-                        }}
-                      >
-                        {plan.label}
-                      </div>
-                      <div
-                        style={{
-                          fontSize: "1.7rem",
-                          fontWeight: 900,
-                          marginBottom: 2,
-                        }}
-                      >
-                        {plan.price}
-                      </div>
-                      <div
-                        style={{
-                          fontSize: "0.72rem",
-                          opacity: 0.65,
-                          marginBottom: 18,
-                        }}
-                      >
-                        {plan.period}
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: 6,
-                          textAlign: "left",
-                          marginBottom: 18,
-                        }}
-                      >
-                        {plan.features.map((f, j) => (
-                          <div
-                            key={j}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 6,
-                              fontSize: "0.78rem",
-                              opacity: 0.9,
-                            }}
-                          >
-                            <span
+                      <div style={{ position: "relative", zIndex: 1 }}>
+                        <div
+                          style={{
+                            fontSize: "0.72rem",
+                            fontWeight: 700,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.08em",
+                            opacity: 0.7,
+                            marginBottom: 8,
+                            marginTop: plan.featured ? 8 : 0,
+                          }}
+                        >
+                          {plan.label}
+                        </div>
+                        <div
+                          style={{
+                            fontSize: "1.7rem",
+                            fontWeight: 900,
+                            marginBottom: 2,
+                          }}
+                        >
+                          {plan.price}
+                        </div>
+                        <div
+                          style={{
+                            fontSize: "0.72rem",
+                            opacity: 0.65,
+                            marginBottom: 18,
+                          }}
+                        >
+                          {plan.period}
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 6,
+                            textAlign: "left",
+                            marginBottom: 18,
+                          }}
+                        >
+                          {plan.features.map((f, j) => (
+                            <div
+                              key={j}
                               style={{
-                                color: plan.featured
-                                  ? "rgba(255,255,255,0.8)"
-                                  : "var(--teal)",
-                                fontWeight: 700,
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 6,
+                                fontSize: "0.78rem",
+                                opacity: 0.9,
                               }}
                             >
-                              ✓
-                            </span>{" "}
-                            {f}
-                          </div>
-                        ))}
+                              <span className="pricing-card__check">✓</span>{" "}
+                              {f}
+                            </div>
+                          ))}
+                        </div>
+                        <Link to="/contact" className="pricing-card__btn">
+                          Enroll Now
+                        </Link>
                       </div>
-                      <Link
-                        to="/contact"
-                        style={{
-                          display: "block",
-                          background: plan.featured
-                            ? "var(--orange)"
-                            : "rgba(0,150,136,0.1)",
-                          color: plan.featured ? "white" : "#00695c",
-                          borderRadius: 999,
-                          padding: "9px 0",
-                          fontSize: "0.8rem",
-                          fontWeight: 700,
-                          textAlign: "center",
-                          textDecoration: "none",
-                          minHeight: 40,
-                          lineHeight: "22px",
-                        }}
-                      >
-                        Enroll Now
-                      </Link>
                     </motion.div>
                   ))}
                 </motion.div>

@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
+import "./Resources.css";
 
 const resources = [
   { icon: "📄", title: "Mathematics Formula Sheet", desc: "Comprehensive formula reference covering all key maths topics for 10th and 12th standard.", tag: "PDF Download", color: "var(--teal)" },

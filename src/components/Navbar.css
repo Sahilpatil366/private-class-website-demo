@@ -1,0 +1,238 @@
+/* ================================================
+   NAVBAR
+   ================================================ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 0;
+  position: relative;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--orange);
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-name {
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  white-space: nowrap;
+}
+
+.brand-tagline {
+  font-size: 0.62rem;
+  color: var(--orange);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* Nav links — desktop */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links .nav-link,
+.nav-links a.nav-link {
+  color: var(--text-dark) !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-links .nav-link:hover,
+.nav-links a.nav-link:hover {
+  color: var(--orange) !important;
+  background: rgba(242, 101, 34, 0.08);
+}
+
+/* CTA button */
+.nav-cta {
+  background: var(--orange);
+  color: var(--white) !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(242,101,34,0.25);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-cta:hover { text-decoration: none; }
+
+/* Mobile-only enroll CTA inside dropdown — hidden on desktop */
+.nav-links-cta-mobile {
+  display: none;
+}
+.nav-cta:hover {
+  background: var(--orange-dark);
+  box-shadow: 0 6px 16px rgba(242,101,34,0.35);
+  transform: translateY(-1px);
+}
+
+/* Hamburger button — hidden on desktop */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  padding: 8px 10px;
+  flex-shrink: 0;
+  z-index: 10;
+  transition: border-color 0.2s;
+}
+.mobile-toggle:hover { border-color: var(--orange); }
+.mobile-toggle:focus {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.hamburger {
+  width: 22px;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hamburger span {
+  display: block;
+  height: 2px;
+  background: var(--text-dark);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ================================================
+   RESPONSIVE — MOBILE BREAKPOINT (≤ 860px)
+   ================================================ */
+@media (max-width: 860px) {
+  .mobile-toggle { display: flex; align-items: center; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 1px);
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    border-bottom: 2px solid var(--orange);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    z-index: 999;
+    /* Smooth animation */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.2s ease;
+  }
+
+  .nav-links.open {
+    display: flex;
+    max-height: 400px;
+  }
+
+  .nav-links .nav-link,
+  .nav-links a.nav-link {
+    padding: 14px 24px;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    font-size: 0.95rem;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links .nav-link:last-child,
+  .nav-links a.nav-link:last-child {
+    border-bottom: none;
+  }
+
+  /* Move Enroll button inside menu on mobile */
+  .nav-cta { display: none; }
+
+  /* Show the enroll CTA inside the mobile dropdown */
+  .nav-links-cta-mobile {
+    display: block;
+    margin: 12px 24px 8px;
+    background: var(--orange);
+    color: var(--white);
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    min-height: 48px;
+    line-height: 1.4;
+  }
+}
+
+/* ================================================
+   RESPONSIVE — SMALL MOBILE (≤ 640px)
+   ================================================ */
+@media (max-width: 640px) {
+  .brand-logo { width: 40px; height: 40px; }
+}
+
+/* ================================================
+   RESPONSIVE — EXTRA SMALL (≤ 400px)
+   ================================================ */
+@media (max-width: 400px) {
+  .brand-name { font-size: 0.85rem; }
+  .brand-tagline { font-size: 0.58rem; }
+}

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
+import "./About.css";
 
 // Animation variants
 const fadeInUp = {

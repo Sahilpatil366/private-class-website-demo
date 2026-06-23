@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import logoImg from "../assets/logo.png";
+import "./Navbar.css";
 
 const navItems = [
   { label: "Home",      to: "/" },
@@ -18,6 +19,7 @@ function Navbar() {
 
   // Close menu on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
   }, [location.pathname]);
 

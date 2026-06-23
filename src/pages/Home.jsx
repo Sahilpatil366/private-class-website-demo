@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import logoImg from "../assets/logo.png";
 import heroBg from "../assets/results-bg.png";
 import PageTransition from "../components/PageTransition";
+import "./Home.css";
 
 /* ─────────────────────────────────────────────────
    ANIMATION VARIANTS
@@ -178,7 +179,7 @@ function Home() {
                 { value: "30+", label: "Years Experience" },
                 { value: "100%", label: "Pass Rate" },
                 { value: "50+", label: "State Toppers" },
-              ].map((stat, i) => (
+              ].map((stat) => (
                 <motion.div
                   key={stat.label}
                   variants={cardVariant}
