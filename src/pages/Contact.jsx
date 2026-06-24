@@ -363,29 +363,6 @@ function Contact() {
         </motion.div>
       </div>
 
-      {/* ===== JOIN COMMUNITY STRIP ===== */}
-      <motion.div
-        className="community-strip"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-      >
-        <div className="container">
-          <h3>Join Our Community</h3>
-          <p>Enter your email address to get notified about new batches and updates.</p>
-          <div className="community-form">
-            <input
-              className="community-input"
-              type="email"
-              placeholder="Enter your email"
-              aria-label="Email address"
-            />
-            <button className="community-btn">Subscribe</button>
-          </div>
-        </div>
-      </motion.div>
-
       <Footer />
     </div>
     </PageTransition>

@@ -1,9 +1,10 @@
-import { motion } from "framer-motion"; // <-- NEW import
+import { motion } from "framer-motion"; 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
 import "./Resources.css";
+import { useState } from "react";
 
 const resources = [
   { icon: "📄", title: "Mathematics Formula Sheet", desc: "Comprehensive formula reference covering all key maths topics for 10th and 12th standard.", tag: "PDF Download", color: "var(--teal)" },
@@ -26,6 +27,35 @@ const staggerContainer = {
 };
 
 function Resources() {
+
+      const [email, setEmail] = useState("");
+      const [loading, setLoading] = useState(false);
+
+      const handleSubscribe = async () => {
+        try {
+          setLoading(true);
+
+          await fetch(
+            "https://script.google.com/macros/s/AKfycbyZzS_pRyP-rPgy4GRVPVcDwnVJqlMa6_4Alv_LMaT6W8zcfG8SyMdmFDIsCEgLrIa3/exec",
+            {
+              method: "POST",
+              mode: "no-cors",
+              body: new URLSearchParams({
+                email: email,
+              }),
+            }
+          );
+
+          alert("Successfully subscribed!");
+          setEmail("");
+
+        } catch (error) {
+          console.error(error);
+          alert("Something went wrong.");
+        } finally {
+          setLoading(false);
+        }
+      };
   return (
     <PageTransition>
       <div style={{ background: "var(--off-white)", minHeight: "100vh" }}>
@@ -110,9 +140,22 @@ function Resources() {
             <h3>Get Notified About New Resources</h3>
             <p>Subscribe and we'll send new study materials and batch updates directly to your inbox.</p>
             <div className="community-form">
-              <input className="community-input" type="email" placeholder="Enter your email" />
-              <button className="community-btn">Subscribe</button>
-            </div>
+            <input
+              className="community-input"
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <button
+              className="community-btn"
+              onClick={handleSubscribe}
+              disabled={loading}
+            >
+              {loading ? "Subscribing..." : "Subscribe"}
+            </button>
+          </div>
           </div>
         </motion.div>
 

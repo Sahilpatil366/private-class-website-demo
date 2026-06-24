@@ -267,32 +267,36 @@ function Syllabus() {
           </div>
         </motion.section>
 
-        {/* ── Community Strip ── */}
-        <motion.div
-          className="community-strip"
+        <motion.section
+          className="cta-section"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
           <div className="container">
-            <h3>Join Our Community</h3>
+            <h2>Need Help Choosing a Course?</h2>
             <p>
-              Enter your email address to get notified about new batches and
-              updates.
+              Talk to our counselors and get personalized guidance for selecting
+              the right course and batch.
             </p>
-            <div className="community-form">
-              <input
-                className="community-input"
-                type="email"
-                placeholder="Enter your email"
-                aria-label="Email address"
-              />
-              <button className="community-btn">Subscribe</button>
+
+            <div className="cta-actions">
+              <Link to="/contact" className="cta-btn cta-btn-primary">
+                Contact Us
+              </Link>
+
+              <a
+                href="https://wa.me/919987714003"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-outline-white"
+              >
+                WhatsApp Us
+              </a>
             </div>
           </div>
-        </motion.div>
-
+        </motion.section>
         {/* ── Pricing & FAQ ── */}
         <motion.section
           className="section"
@@ -303,7 +307,7 @@ function Syllabus() {
           variants={fadeInUp}
         >
           <div className="container">
-            <div className="syllabus-pricing-faq-grid">
+          <div className="syllabus-pricing-faq-grid">
 
               {/* Pricing */}
               <div>
