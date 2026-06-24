@@ -226,12 +226,9 @@ function Home() {
               <div style={{ display: "inline-block", background: "rgba(242,101,34,0.1)", border: "1px solid rgba(242,101,34,0.2)", borderRadius: 6, padding: "6px 20px", marginBottom: 30, fontSize: "0.8rem", fontWeight: 700, color: "#f26522", textTransform: "uppercase", letterSpacing: "0.1em" }}>SSC Board (10th Std) — 2024</div>
               <div style={{ display: "flex", gap: 20, flexWrap: "wrap", justifyContent: "center" }}>
                 {[
-                  { rank: "1st", name: "Pari Gade", pct: "92.20%", school: "Auxilium School", big: true },
-                  { rank: "2nd", name: "Om Panchal", pct: "90.40%", school: "Auxilium School", big: false },
-                  { rank: "3rd", name: "Siddhi Sawant", pct: "87%", school: "Auxilium School", big: false },
-                  { rank: "4th", name: "Arya Bhalekar", pct: "86%", school: "Auxilium School", big: false },
-                  { rank: "5th", name: "Maithili Kamble", pct: "85%", school: "Auxilium School", big: false },
-                  { rank: "6th", name: "Aleena Shaikh", pct: "80%", school: "Auxilium School", big: false },
+                  { rank: "1st", name: "Vibhuti Patil", pct: "96.20%", big: true },
+                  { rank: "2nd", name: "Pari Gade", pct: "92.20%", big: false },
+                  { rank: "3rd", name: "Vaidehi Bhojane", pct: "91.00%", big: false },
                 ].map(({ rank, name, pct, school, big }) => (
                   <motion.div
                     key={name}
