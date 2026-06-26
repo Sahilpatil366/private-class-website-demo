@@ -4,6 +4,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import logoImg from "../assets/logo.png";
 import heroBg from "../assets/results-bg.png";
+import topperVaidehi from "../assets/topper-vaidehi.png";
+import topperVibhuti from "../assets/topper-vibhuti.png";
+import topperPari from "../assets/topper-pari.png";
 import PageTransition from "../components/PageTransition";
 import "./Home.css";
 
@@ -200,98 +203,51 @@ function Home() {
           </div>
         </motion.section>
 
-        {/* ── OUR RESULTS ── */}
+        {/* ── LAST 3 YEARS SSC TOPPERS ── */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
-          style={{
-            background: "#fff9f5",
-            padding: "80px 0",
-            position: "relative",
-            borderBottom: "1px solid #eee",
-          }}
+          className="toppers-section"
         >
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "500px", pointerEvents: "none", background: "radial-gradient(ellipse at 50% 0%, rgba(242,101,34,0.06) 0%, transparent 70%)" }} />
           <div className="container" style={{ position: "relative", zIndex: 1 }}>
             <div style={{ textAlign: "center", marginBottom: 50 }}>
-              <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "#f26522", marginBottom: 8 }}>🏆 We're so proud of our kids</div>
-              <h2 style={{ fontSize: "clamp(1.8rem,3vw,2.5rem)", fontWeight: 800, color: "#1a1a2e", margin: 0, lineHeight: 1.2 }}>Meet Our 2024 Top Scorers</h2>
-              <p style={{ color: "#666", fontSize: "0.95rem", marginTop: 10 }}>100% Pass Rate Across Both SSC & HSC Boards!</p>
+              <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "#f26522", marginBottom: 8 }}>🏆 Our Pride — SSC Toppers</div>
+              <h2 style={{ fontSize: "clamp(1.8rem,3vw,2.5rem)", fontWeight: 800, color: "#1a1a2e", margin: 0, lineHeight: 1.2 }}>Last 3 Years SSC Toppers</h2>
+              <p style={{ color: "#666", fontSize: "0.95rem", marginTop: 10 }}>Consistently producing top results, year after year!</p>
             </div>
 
-            {/* SSC Results */}
-            <div style={{ marginBottom: 50 }}>
-              <div style={{ display: "inline-block", background: "rgba(242,101,34,0.1)", border: "1px solid rgba(242,101,34,0.2)", borderRadius: 6, padding: "6px 20px", marginBottom: 30, fontSize: "0.8rem", fontWeight: 700, color: "#f26522", textTransform: "uppercase", letterSpacing: "0.1em" }}>SSC Board (10th Std) — 2024</div>
-              <div style={{ display: "flex", gap: 20, flexWrap: "wrap", justifyContent: "center" }}>
-                {[
-                  { rank: "1st", name: "Vibhuti Patil", pct: "96.20%", big: true },
-                  { rank: "2nd", name: "Pari Gade", pct: "92.20%", big: false },
-                  { rank: "3rd", name: "Vaidehi Bhojane", pct: "91.00%", big: false },
-                ].map(({ rank, name, pct, school, big }) => (
-                  <motion.div
-                    key={name}
-                    variants={cardVariant}
-                    whileHover={{ y: -5 }}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    style={{
-                      background: "#fff",
-                      border: big ? "2px solid #f26522" : "1px solid #ffebe0",
-                      borderRadius: 12,
-                      padding: big ? "28px 24px" : "24px 20px",
-                      textAlign: "center",
-                      width: big ? 160 : 140,
-                      position: "relative",
-                      boxShadow: big ? "0 8px 24px rgba(242,101,34,0.12)" : "0 4px 16px rgba(0,0,0,0.03)",
-                    }}
-                  >
-                    <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", background: big ? "#f26522" : "#fff", color: big ? "#fff" : "#f26522", fontWeight: 800, fontSize: "0.7rem", padding: "4px 12px", borderRadius: 999, whiteSpace: "nowrap", border: big ? "2px solid #fff" : "1px solid #ffebe0" }}>{rank} Rank</div>
-                    <div style={{ width: big ? 80 : 68, height: big ? 80 : 68, borderRadius: "50%", background: "#fff5ee", border: "2px dashed #fcd3c1", margin: "12px auto 16px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.6rem" }}>👤</div>
-                    <div style={{ fontSize: big ? "1.5rem" : "1.3rem", fontWeight: 900, color: big ? "#1a1a2e" : "#333", marginBottom: 6, lineHeight: 1 }}>{pct}</div>
-                    <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "#444", marginBottom: 4 }}>{name}</div>
-                    <div style={{ fontSize: "0.7rem", color: "#888" }}>{school}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* HSC Results */}
-            <div>
-              <div style={{ display: "inline-block", background: "rgba(242,101,34,0.1)", border: "1px solid rgba(242,101,34,0.2)", borderRadius: 6, padding: "6px 20px", marginBottom: 30, fontSize: "0.8rem", fontWeight: 700, color: "#f26522", textTransform: "uppercase", letterSpacing: "0.1em" }}>HSC Board (12th Std) — 2024</div>
-              <div style={{ display: "flex", gap: 20, flexWrap: "wrap", justifyContent: "center" }}>
-                {[
-                  { rank: "Topper", name: "Vibhuti Patil", pct: "96.20%", stream: "SSC · Auxilium School", big: true },
-                  { rank: "Commerce", name: "Apurva Rajadhyaksha", pct: "80%", stream: "XII Commerce · Eco 90/100", big: false },
-                ].map(({ rank, name, pct, stream, big }) => (
-                  <motion.div
-                    key={name}
-                    variants={cardVariant}
-                    whileHover={{ y: -5 }}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    style={{
-                      background: "#fff",
-                      border: big ? "2px solid #f26522" : "1px solid #ffebe0",
-                      borderRadius: 12,
-                      padding: "28px 24px",
-                      textAlign: "center",
-                      width: big ? 170 : 160,
-                      position: "relative",
-                      boxShadow: big ? "0 8px 24px rgba(242,101,34,0.12)" : "0 4px 16px rgba(0,0,0,0.03)",
-                    }}
-                  >
-                    <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", background: big ? "#f26522" : "#fff", color: big ? "#fff" : "#f26522", fontWeight: 800, fontSize: "0.7rem", padding: "4px 12px", borderRadius: 999, whiteSpace: "nowrap", border: big ? "2px solid #fff" : "1px solid #ffebe0" }}>{rank}</div>
-                    <div style={{ width: 84, height: 84, borderRadius: "50%", background: "#fff5ee", border: "2px dashed #fcd3c1", margin: "12px auto 16px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.8rem" }}>👤</div>
-                    <div style={{ fontSize: "1.6rem", fontWeight: 900, color: big ? "#1a1a2e" : "#333", marginBottom: 6, lineHeight: 1 }}>{pct}</div>
-                    <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#444", marginBottom: 4 }}>{name}</div>
-                    <div style={{ fontSize: "0.75rem", color: "#888" }}>{stream}</div>
-                  </motion.div>
-                ))}
-              </div>
+            <div className="toppers-grid">
+              {[
+                { year: "2024", name: "Pari Gade", pct: "92.20%", img: topperPari, highlight: false },
+                { year: "2025", name: "Vibhuti Patil", pct: "96.20%", img: topperVibhuti, highlight: true },
+                { year: "2026", name: "Vaidehi Bhojane", pct: "91.00%", img: topperVaidehi, highlight: false },
+              ].map(({ year, name, pct, img, highlight }) => (
+                <motion.div
+                  key={year}
+                  variants={cardVariant}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className={`topper-card${highlight ? " topper-card--highlight" : ""}`}
+                >
+                  {highlight && (
+                    <div className="topper-crown">👑</div>
+                  )}
+                  <div className="topper-year-badge" style={{ background: highlight ? "#f26522" : "#fff", color: highlight ? "#fff" : "#f26522", border: highlight ? "2px solid #fff" : "1px solid #ffebe0" }}>
+                    SSC {year}
+                  </div>
+                  <div className="topper-img-wrap" style={{ border: highlight ? "3px solid #f26522" : "3px solid #ffebe0" }}>
+                    <img src={img} alt={name} className="topper-img" />
+                  </div>
+                  <div className="topper-pct" style={{ color: highlight ? "#f26522" : "#1a1a2e" }}>{pct}</div>
+                  <div className="topper-name">{name}</div>
+                  <div className="topper-subtitle">SSC Topper of {year}</div>
+                </motion.div>
+              ))}
             </div>
 
             <div style={{ textAlign: "center", marginTop: 50, borderTop: "1px solid #eee", paddingTop: 30 }}>
@@ -393,7 +349,7 @@ function Home() {
             <h2 style={{ fontSize: "clamp(1.4rem,2.5vw,1.9rem)", fontWeight: 800, color: "#1a1a2e", marginBottom: 28, lineHeight: 1.25 }}>Don't just take our word for it</h2>
             <motion.div
               variants={staggerContainer}
-              style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}
+              className="home-testimonials-grid"
             >
               {[
                 { text: "The teachers here actually care. When I was struggling with math, my teacher sat with me after class until I completely understood it. It didn't feel like a normal coaching class.", name: "Aditya Sharma", detail: "CET Qualifier, 12th Std" },
@@ -428,7 +384,7 @@ function Home() {
           variants={fadeInUp}
           style={{ background: "#1a1a2e", padding: "52px 0" }}
         >
-          <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
+          <div className="container home-contact-grid">
             <div>
               <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#f26522", marginBottom: 10 }}>Find Us</p>
               <h2 style={{ fontSize: "clamp(1.3rem,2.2vw,1.7rem)", fontWeight: 800, color: "#fff", marginBottom: 16, lineHeight: 1.3 }}>Come visit us in Wadala</h2>

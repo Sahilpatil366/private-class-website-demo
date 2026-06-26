@@ -4,7 +4,7 @@
 
 .site-header {
   position: sticky;
-  top: 0;
+  top: 0 ;
   z-index: 1000;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
@@ -18,8 +18,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 14px 0;
+  gap: 36px;
+  padding: 18px 0;
   position: relative;
 }
 
@@ -67,7 +67,7 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   margin-left: auto;
   list-style: none;
   padding: 0;
@@ -76,10 +76,10 @@
 .nav-links .nav-link,
 .nav-links a.nav-link {
   color: var(--text-dark) !important;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 10px 16px;
+  border-radius: 8px;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
@@ -94,9 +94,9 @@
 .nav-cta {
   background: var(--orange);
   color: var(--white) !important;
-  padding: 10px 20px;
+  padding: 12px 28px;
   border-radius: 8px;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(242,101,34,0.25);

@@ -116,8 +116,9 @@ img { max-width: 100%; display: block; }
 .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
 
 .btn-large {
-  padding: 14px 36px;
-  font-size: 0.95rem;
+  padding: 16px 40px;
+  font-size: 1.05rem;
+  border-radius: 10px;
 }
 .btn-sm {
   padding: 7px 16px;
@@ -320,7 +321,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 18px;
   flex-wrap: wrap;
 }
 
