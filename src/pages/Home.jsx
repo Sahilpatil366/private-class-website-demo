@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FaSchool, FaBookOpen, FaGraduationCap } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import logoImg from "../assets/logo.png";
@@ -249,15 +250,6 @@ function Home() {
                 </motion.div>
               ))}
             </div>
-
-            <div style={{ textAlign: "center", marginTop: 50, borderTop: "1px solid #eee", paddingTop: 30 }}>
-              <p style={{ color: "#777", fontSize: "0.9rem", margin: 0 }}>
-                🎉 We are currently taking admissions for the new batch.{" "}
-                <Link to="/contact" style={{ color: "#f26522", fontWeight: 700, textDecoration: "none" }}>
-                  Come visit us and secure a seat →
-                </Link>
-              </p>
-            </div>
           </div>
         </motion.section>
 
@@ -267,36 +259,104 @@ function Home() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
-          style={{ background: "#fff", padding: "52px 0", borderBottom: "1px solid #eee" }}
+          style={{ background: "#fff", padding: "64px 0", borderBottom: "1px solid #eee" }}
         >
           <div className="container">
             <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#f26522", marginBottom: 10 }}>How We Can Help</p>
-            <h2 style={{ fontSize: "clamp(1.4rem,2.5vw,1.9rem)", fontWeight: 800, color: "#1a1a2e", marginBottom: 32, lineHeight: 1.25 }}>Classes we teach</h2>
+            <h2 style={{ fontSize: "clamp(1.4rem,2.5vw,1.9rem)", fontWeight: 800, color: "#1a1a2e", marginBottom: 36, lineHeight: 1.25 }}>Classes we teach</h2>
             <motion.div
               variants={staggerContainer}
-              style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 16 }}
+              style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}
             >
               {[
-                { icon: "📗", title: "V to X", sub: "State Board", bg: "#e8f5e9" },
-                { icon: "📘", title: "XI to XII", sub: "Science & Commerce", bg: "#e3f2fd" },
-                { icon: "🎓", title: "FY to TY", sub: "Commerce Degree", bg: "#f3e5f5" },
-              ].map(({ icon, title, sub, bg }) => (
+                {
+                  icon: <FaSchool />,
+                  title: "V to X",
+                  sub: "State Board",
+                  desc: "Build a strong foundation for high school board exams with dedicated conceptual coaching.",
+                  color: "#009688",
+                  bg: "rgba(0, 150, 136, 0.1)",
+                },
+                {
+                  icon: <FaBookOpen />,
+                  title: "XI to XII",
+                  sub: "Science & Commerce",
+                  desc: "Specialized coaching for college boards and entrance prep with regular testing.",
+                  color: "#f26522",
+                  bg: "rgba(242, 101, 34, 0.1)",
+                },
+                {
+                  icon: <FaGraduationCap />,
+                  title: "FY to TY",
+                  sub: "Commerce Degree",
+                  desc: "Comprehensive semester-wise coaching for university exams and commerce subjects.",
+                  color: "#7b1fa2",
+                  bg: "rgba(123, 31, 162, 0.1)",
+                },
+              ].map(({ icon, title, sub, desc, color, bg }) => (
                 <motion.div
                   key={title}
                   variants={cardVariant}
-                  whileHover={{ scale: 1.02 }}
-                  style={{ background: bg, borderRadius: 10, padding: "18px 20px", display: "flex", alignItems: "flex-start", gap: 14 }}
+                  whileHover={{
+                    y: -8,
+                    borderColor: color,
+                    boxShadow: "var(--shadow-hover)",
+                  }}
+                  style={{
+                    background: "var(--white)",
+                    borderRadius: "var(--radius-lg)",
+                    border: "1.5px solid var(--border)",
+                    padding: "32px 24px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    gap: 16,
+                    cursor: "pointer",
+                    boxShadow: "var(--shadow)",
+                    transition: "border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease",
+                  }}
                 >
-                  <span style={{ fontSize: "1.7rem", flexShrink: 0 }}>{icon}</span>
+                  <div
+                    style={{
+                      width: 54,
+                      height: 54,
+                      borderRadius: "50%",
+                      background: bg,
+                      color: color,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "1.5rem",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {icon}
+                  </div>
                   <div>
-                    <div style={{ fontWeight: 700, fontSize: "0.93rem", color: "#1a1a2e", marginBottom: 3 }}>{title}</div>
-                    <div style={{ fontSize: "0.78rem", color: "#777" }}>{sub}</div>
+                    <h3 style={{ fontWeight: 700, fontSize: "1.15rem", color: "var(--text-dark)", marginBottom: 4, fontFamily: "var(--font-heading)" }}>{title}</h3>
+                    <div style={{ fontSize: "0.8rem", fontWeight: 600, color: color, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 10 }}>{sub}</div>
+                    <p style={{ fontSize: "0.88rem", color: "var(--text-body)", lineHeight: 1.6, margin: 0 }}>{desc}</p>
+                  </div>
+                  <div style={{ marginTop: "auto", paddingTop: 12 }}>
+                    <Link
+                      to="/syllabus"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 6,
+                        fontSize: "0.85rem",
+                        fontWeight: 700,
+                        color: "var(--text-dark)",
+                        textDecoration: "none",
+                      }}
+                    >
+                      See syllabus & timings →
+                    </Link>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
-            <div style={{ marginTop: 28, textAlign: "center" }}>
-              <Link to="/syllabus" style={{ color: "#f26522", fontWeight: 600, fontSize: "0.9rem", textDecoration: "underline" }}>See detailed syllabus & timings →</Link>
+            <div style={{ marginTop: 36, textAlign: "center" }}>
             </div>
           </div>
         </motion.section>
@@ -307,12 +367,14 @@ function Home() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          style={{ background: "#f9f9f9", padding: "52px 0" }}
+          style={{ background: "#f9f9f9", padding: "64px 0" }}
         >
-          <div className="container" style={{ maxWidth: 780 }}>
-            <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#f26522", marginBottom: 10 }}>Why Kids (And Parents) Like Us</p>
-            <h2 style={{ fontSize: "clamp(1.4rem,2.5vw,1.9rem)", fontWeight: 800, color: "#1a1a2e", marginBottom: 28, lineHeight: 1.25 }}>5 things that make us feel like home</h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+          <div className="container">
+            <div style={{ textAlign: "center", marginBottom: 44 }}>
+              <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#f26522", marginBottom: 10 }}>Why Kids (And Parents) Like Us</p>
+              <h2 style={{ fontSize: "clamp(1.4rem,2.5vw,2.1rem)", fontWeight: 800, color: "#1a1a2e", lineHeight: 1.25 }}>5 things that make us feel like home</h2>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {[
                 ["01", "Teachers who actually know you", "We keep our batches small on purpose. Your teacher will know exactly where you struggle, and will make sure you don't stay stuck for long."],
                 ["02", "Ready-to-read printed notes", "No more frantic copying from the blackboard. We give you clear, easy-to-read printed notes for every single chapter."],
@@ -323,12 +385,46 @@ function Home() {
                 <motion.div
                   key={num}
                   variants={fadeInUp}
-                  style={{ display: "flex", gap: 20, alignItems: "flex-start", padding: "20px 0", borderBottom: "1px solid #e8e8e8" }}
+                  whileHover={{
+                    x: 10,
+                    background: "rgba(252, 101, 34, 0.03)",
+                    borderColor: "rgba(242, 101, 34, 0.25)",
+                  }}
+                  style={{
+                    display: "flex",
+                    gap: 24,
+                    alignItems: "flex-start",
+                    padding: "24px 28px",
+                    background: "var(--white)",
+                    borderRadius: "var(--radius-lg)",
+                    border: "1.5px solid var(--border)",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.01)",
+                    transition: "all 0.3s ease",
+                  }}
                 >
-                  <span style={{ fontSize: "1.1rem", fontWeight: 800, color: "#e0e0e0", minWidth: 28, flexShrink: 0, lineHeight: 1.6 }}>{num}</span>
+                  <div
+                    style={{
+                      width: 48,
+                      height: 48,
+                      borderRadius: "50%",
+                      background: "var(--orange)",
+                      color: "var(--white)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "1.1rem",
+                      fontWeight: 700,
+                      fontFamily: "var(--font-heading)",
+                      flexShrink: 0,
+                      boxShadow: "0 4px 12px rgba(242, 101, 34, 0.3)",
+                      marginTop: 2,
+                    }}
+                  >
+                    {num}
+                  </div>
                   <div>
-                    <div style={{ fontWeight: 700, fontSize: "0.97rem", color: "#1a1a2e", marginBottom: 4 }}>{title}</div>
-                    <div style={{ fontSize: "0.86rem", color: "#666", lineHeight: 1.7 }}>{desc}</div>
+                    <h3 style={{ fontWeight: 700, fontSize: "1.05rem", color: "var(--text-dark)", marginBottom: 6, fontFamily: "var(--font-heading)" }}>{title}</h3>
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-body)", lineHeight: 1.65, margin: 0 }}>{desc}</p>
                   </div>
                 </motion.div>
               ))}

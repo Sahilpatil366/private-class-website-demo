@@ -290,9 +290,9 @@ function Syllabus() {
                 href="https://wa.me/919987714003"
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-outline-white"
+                className="cta-btn cta-btn-primary"
               >
-                WhatsApp Us
+              WhatsApp Us
               </a>
             </div>
           </div>
