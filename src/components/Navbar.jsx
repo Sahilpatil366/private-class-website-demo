@@ -13,22 +13,28 @@ const navItems = [
 ];
 
 function Navbar() {
-  const [open, setOpen] = useState(false);
-  const location = useLocation();
-  const navRef = useRef(null);
+  const [open, setOpen]       = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location              = useLocation();
+  const navRef                = useRef(null);
 
-  // Close menu on route change
+  /* ── Track scroll position ── */
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // run once on mount
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  /* ── Close menu on route change ── */
+  useEffect(() => {
     setOpen(false);
   }, [location.pathname]);
 
-  // Close menu when clicking outside
+  /* ── Close menu when clicking outside ── */
   useEffect(() => {
     function handleClickOutside(e) {
-      if (navRef.current && !navRef.current.contains(e.target)) {
-        setOpen(false);
-      }
+      if (navRef.current && !navRef.current.contains(e.target)) setOpen(false);
     }
     if (open) {
       document.addEventListener("mousedown", handleClickOutside);
@@ -40,7 +46,7 @@ function Navbar() {
     };
   }, [open]);
 
-  // Close on Escape key
+  /* ── Close on Escape key ── */
   useEffect(() => {
     function handleKeyDown(e) {
       if (e.key === "Escape" && open) setOpen(false);
@@ -50,8 +56,11 @@ function Navbar() {
   }, [open]);
 
   return (
-    <header className="site-header" ref={navRef}>
-      <div className="container header-inner">
+    <header
+      className={`site-header${scrolled ? " site-header--scrolled" : ""}`}
+      ref={navRef}
+    >
+      <div className="header-inner">
 
         {/* Logo */}
         <Link
@@ -89,7 +98,7 @@ function Navbar() {
             </Link>
           ))}
 
-          {/* Enroll Now — visible inside mobile menu */}
+          {/* Enroll Now — visible inside mobile menu only */}
           <Link
             className="nav-links-cta-mobile"
             to="/contact"
@@ -110,7 +119,7 @@ function Navbar() {
           Enroll Now
         </Link>
 
-        {/* Hamburger button — visible on mobile only */}
+        {/* Hamburger — visible on mobile only */}
         <button
           className="mobile-toggle"
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}

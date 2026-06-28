@@ -89,11 +89,7 @@ function Resources() {
           variants={staggerContainer}
         >
           <div className="container">
-            <div className="section-header">
-              <div className="section-badge">📚 Study Materials</div>
-              <h2>Free Learning Resources</h2>
-              <p>All resources are curated by our faculty to complement classroom learning at Suyash Classes.</p>
-            </div>
+            <div className="section-header"></div>
 
             <div className="features-grid">
               {resources.map((res, i) => (
@@ -170,8 +166,8 @@ function Resources() {
           <h2>Ready to Start Learning?</h2>
           <p>Enroll in Suyash Classes and gain access to all study materials, tests, and personal guidance.</p>
           <div className="cta-actions">
-            <Link to="/contact" className="btn btn-primary btn-large">Enroll Now</Link>
-            <Link to="/syllabus" className="btn btn-outline-white btn-large">View All Courses</Link>
+            <Link to="/contact" className="cta-btn cta-btn-primary">Enroll Now</Link>
+            <Link to="/syllabus" className="cta-btn cta-btn-primary">View All Courses</Link>
           </div>
         </motion.section>
 

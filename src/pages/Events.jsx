@@ -283,7 +283,7 @@ function Events() {
           <div className="cta-actions">
             <Link
               to="/contact"
-              className="btn btn-outline-white btn-large"
+              className="cta-btn cta-btn-primary"
               style={{
                 background: "#fff",
                 color: "#f26522",
@@ -292,7 +292,7 @@ function Events() {
             >
               Enroll Today
             </Link>
-            <Link to="/syllabus" className="btn btn-outline-white btn-large">
+            <Link to="/syllabus" className="cta-btn cta-btn-primary">
               Explore Courses
             </Link>
           </div>
