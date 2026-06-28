@@ -235,6 +235,11 @@
   outline-offset: 2px;
 }
 
+.nav-cta {
+  position: relative;
+  z-index: 1001;
+}
+
 .hamburger {
   width: 22px;
   height: 16px;
@@ -361,3 +366,31 @@
   .brand-name { font-size: 0.85rem; }
   .brand-tagline { font-size: 0.56rem; }
 }
+
+.nav-link {
+  position: relative;
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f26522;
+}
+
+.nav-link.active {
+  color: #f26522;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  bottom: -4px;
+  width: 80%;
+  height: 3px;
+  background: var(--orange);
+  border-radius: 10px;
+}
+

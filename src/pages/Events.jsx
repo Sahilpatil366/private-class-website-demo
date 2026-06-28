@@ -5,6 +5,9 @@ import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
 import { Link } from "react-router-dom";
 import "./Events.css";
+import gallery1 from "../assets/gallery-1.jpg";
+import gallery2 from "../assets/gallery-2.jpg";
+import gallery3 from "../assets/gallery-3.jpg";
 
 /* ─────────────────────────────────────────────────────────────
    EVENTS DATA
@@ -61,11 +64,11 @@ const eventsList = [
   },
 ];
 
-/* Three photo placeholders – user will provide actual images later */
-const photoSlots = [
-  { id: 1, label: "Photo 1" },
-  { id: 2, label: "Photo 2" },
-  { id: 3, label: "Photo 3" },
+
+const galleryImages = [
+  { id: 1, img: gallery1, span: "row-span-2 col-span-2" },
+  { id: 2, img: gallery2, span: "row-span-1 col-span-1" },
+  { id: 3, img: gallery3, span: "row-span-1 col-span-1" },
 ];
 
 /* ── Animation variants ── */
@@ -243,24 +246,25 @@ function Events() {
               </p>
             </div>
 
-            <div className="photo-gallery-grid">
-              {photoSlots.map((photo) => (
-                <motion.div
-                  key={photo.id}
-                  className="photo-gallery-card"
-                  variants={scaleIn}
-                >
-                  {/* Empty placeholder — user will add images later */}
-                  <div className="photo-placeholder">
-                    <div className="photo-placeholder-inner">
-                      <span className="photo-placeholder-icon">📷</span>
-                      <span className="photo-placeholder-text">{photo.label}</span>
-                      <span className="photo-placeholder-sub">Coming Soon</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <div className="gallery-grid">
+            {galleryImages.map((img) => (
+              <motion.div
+                key={img.id}
+                className={`gallery-item ${img.span}`}
+                variants={fadeInUp}
+              >
+                <img
+                  src={img.img}
+                  alt={`Gallery ${img.id}`}
+                  className="gallery-img"
+                />
+
+                <div className="gallery-hover">
+                  <span>View Image</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
           </div>
         </motion.section>
 

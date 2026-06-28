@@ -1,7 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import logoImg from "../assets/logo.png";
 import "./Navbar.css";
+
 
 const navItems = [
   { label: "Home",      to: "/" },
@@ -86,17 +87,19 @@ function Navbar() {
           aria-label="Main navigation"
           id="main-nav"
         >
-          {navItems.map(({ label, to }) => (
-            <Link
-              key={to}
-              className="nav-link"
-              to={to}
-              onClick={() => setOpen(false)}
-              aria-current={location.pathname === to ? "page" : undefined}
-            >
-              {label}
-            </Link>
-          ))}
+        {navItems.map(({ label, to }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={to === "/"}
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+            onClick={() => setOpen(false)}
+          >
+            {label}
+          </NavLink>
+        ))}
 
           {/* Enroll Now — visible inside mobile menu only */}
           <Link

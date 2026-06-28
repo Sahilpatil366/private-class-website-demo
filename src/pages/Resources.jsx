@@ -15,7 +15,6 @@ const resources = [
   { icon: "💡", title: "Exam Strategy Handbook", desc: "Tips, time management tricks, and revision plans from our top-scoring students and faculty.", tag: "Study Tips", color: "#c62828" },
 ];
 
-// Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -27,41 +26,42 @@ const staggerContainer = {
 };
 
 function Resources() {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
-      const [email, setEmail] = useState("");
-      const [loading, setLoading] = useState(false);
+    const handleSubscribe = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbyZzS_pRyP-rPgy4GRVPVcDwnVJqlMa6_4Alv_LMaT6W8zcfG8SyMdmFDIsCEgLrIa3/exec", // Copy from the Manage Deployments window
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({ email: email }),
+          }
+        );
 
-      const handleSubscribe = async () => {
-        try {
-          setLoading(true);
-
-          await fetch(
-            "https://script.google.com/macros/s/AKfycbyZzS_pRyP-rPgy4GRVPVcDwnVJqlMa6_4Alv_LMaT6W8zcfG8SyMdmFDIsCEgLrIa3/exec",
-            {
-              method: "POST",
-              mode: "no-cors",
-              body: new URLSearchParams({
-                email: email,
-              }),
-            }
-          );
-
+        if (response.ok) {
           alert("Successfully subscribed!");
           setEmail("");
-
-        } catch (error) {
-          console.error(error);
-          alert("Something went wrong.");
-        } finally {
-          setLoading(false);
+        } else {
+          throw new Error("Server error");
         }
-      };
+      } catch (error) {
+        console.error(error);
+        alert("Something went wrong.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
   return (
     <PageTransition>
       <div style={{ background: "var(--off-white)", minHeight: "100vh" }}>
         <Navbar />
 
-        {/* Hero */}
         <motion.section
           className="contact-hero"
           initial="hidden"
@@ -80,7 +80,6 @@ function Resources() {
           </div>
         </motion.section>
 
-        {/* Resources Grid */}
         <motion.section
           className="section"
           initial="hidden"
@@ -124,7 +123,6 @@ function Resources() {
           </div>
         </motion.section>
 
-        {/* Community Strip */}
         <motion.div
           className="community-strip"
           initial="hidden"
@@ -155,7 +153,6 @@ function Resources() {
           </div>
         </motion.div>
 
-        {/* CTA */}
         <motion.section
           className="cta-section"
           initial="hidden"
@@ -166,8 +163,13 @@ function Resources() {
           <h2>Ready to Start Learning?</h2>
           <p>Enroll in Suyash Classes and gain access to all study materials, tests, and personal guidance.</p>
           <div className="cta-actions">
-            <Link to="/contact" className="cta-btn cta-btn-primary">Enroll Now</Link>
-            <Link to="/syllabus" className="cta-btn cta-btn-primary">View All Courses</Link>
+            <Link to="/contact" className="custom-btn custom-btn-primary custom-btn-large">
+              Enroll Now
+            </Link>
+
+            <Link to="/syllabus" className="custom-btn custom-btn-outline custom-btn-large">
+              View All Courses
+            </Link>
           </div>
         </motion.section>
 
