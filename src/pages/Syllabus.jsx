@@ -406,9 +406,11 @@ function Syllabus() {
                           style={{
                             display: "flex",
                             flexDirection: "column",
+                            alignItems: "flex-start",
+                            width: "fit-content",
+                            margin: "0 auto 18px",
                             gap: 6,
                             textAlign: "left",
-                            marginBottom: 18,
                           }}
                         >
                           {plan.features.map((f, j) => (

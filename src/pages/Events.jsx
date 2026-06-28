@@ -66,9 +66,9 @@ const eventsList = [
 
 
 const galleryImages = [
-  { id: 1, img: gallery1, span: "row-span-2 col-span-2" },
-  { id: 2, img: gallery2, span: "row-span-1 col-span-1" },
-  { id: 3, img: gallery3, span: "row-span-1 col-span-1" },
+  { id: 1, img: gallery1},
+  { id: 2, img: gallery2},
+  { id: 3, img: gallery3},
 ];
 
 /* ── Animation variants ── */

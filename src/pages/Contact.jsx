@@ -146,12 +146,7 @@ function Contact() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <div className="contact-card-inner" style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 52,
-            alignItems: "start",
-          }}>
+          <div className="contact-card-inner">
             {/* Left — Contact info */}
             <div>
               <div className="section-badge">📞 Contact Us</div>
